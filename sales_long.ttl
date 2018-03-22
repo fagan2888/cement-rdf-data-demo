@@ -1,0 +1,704 @@
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://def.seegrid.csiro.au/ontology/om/om-lite#uom> a <http://purl.org/linked-data/cube#AttributeProperty>;
+   rdfs:label "unit of measurement" .
+
+<http://example.org/sales#distribution-csv> dc:title "Annual Cement Channel of Sale 2003 - 2015 (CSV format)";
+   dc:format "text/csv";
+   dcat:downloadURL <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv>;
+   prov:wasDerivedFrom <http://example.org/sales#distribution-pdf> .
+
+<http://example.org/sales#dsd> a <http://purl.org/linked-data/cube#DataStructureDefinition>;
+   <http://purl.org/linked-data/cube#component> [ <http://purl.org/linked-data/cube#measure> <http://example.org/sales#massSold>],  [
+     <http://purl.org/linked-data/cube#attribute> <http://def.seegrid.csiro.au/ontology/om/om-lite#uom>;
+     <http://purl.org/linked-data/cube#componentAttachment> <http://purl.org/linked-data/cube#MeasureProperty>;
+     <http://purl.org/linked-data/cube#componentRequired> true
+   ],  [ <http://purl.org/linked-data/cube#dimension> <http://purl.org/linked-data/sdmx/2009/dimension#refArea>],  [ <http://purl.org/linked-data/cube#dimension> <http://example.org/sales#refSalesChannel>],  [ <http://purl.org/linked-data/cube#dimension> <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod>];
+   rdfs:comment "RDF Data Cube data structure definition for sales data (multi-measure approach)" .
+
+<http://example.org/sales#massSold> a <http://purl.org/linked-data/cube#MeasureProperty>;
+   rdfs:label "quantity sold";
+   rdfs:comment "put back units of measure";
+   rdfs:range xsd:decimal;
+   skos:notation "m" .
+
+<http://example.org/sales#record-2003-merchant> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 2423000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-merchant>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2003> .
+
+<http://example.org/sales#record-2003-other> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 578000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-other>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2003> .
+
+<http://example.org/sales#record-2003-precast> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 3213000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-precast>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2003> .
+
+<http://example.org/sales#record-2003-readyMix> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 5442000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-readyMix>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2003> .
+
+<http://example.org/sales#record-2004-merchant> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 2399000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-merchant>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2004> .
+
+<http://example.org/sales#record-2004-other> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 546000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-other>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2004> .
+
+<http://example.org/sales#record-2004-precast> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 3118000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-precast>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2004> .
+
+<http://example.org/sales#record-2004-readyMix> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 5613000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-readyMix>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2004> .
+
+<http://example.org/sales#record-2005-merchant> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 2204000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-merchant>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2005> .
+
+<http://example.org/sales#record-2005-other> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 574000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-other>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2005> .
+
+<http://example.org/sales#record-2005-precast> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 2918000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-precast>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2005> .
+
+<http://example.org/sales#record-2005-readyMix> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 5610000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-readyMix>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2005> .
+
+<http://example.org/sales#record-2006-merchant> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 2158000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-merchant>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2006> .
+
+<http://example.org/sales#record-2006-other> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 453000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-other>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2006> .
+
+<http://example.org/sales#record-2006-precast> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 2764000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-precast>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2006> .
+
+<http://example.org/sales#record-2006-readyMix> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 5949000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-readyMix>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2006> .
+
+<http://example.org/sales#record-2007-merchant> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 2198000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-merchant>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2007> .
+
+<http://example.org/sales#record-2007-other> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 459000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-other>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2007> .
+
+<http://example.org/sales#record-2007-precast> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 2837000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-precast>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2007> .
+
+<http://example.org/sales#record-2007-readyMix> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 6404000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-readyMix>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2007> .
+
+<http://example.org/sales#record-2008-merchant> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 1992000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-merchant>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2008> .
+
+<http://example.org/sales#record-2008-other> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 541000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-other>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2008> .
+
+<http://example.org/sales#record-2008-precast> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 2206000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-precast>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2008> .
+
+<http://example.org/sales#record-2008-readyMix> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 5402000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-readyMix>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2008> .
+
+<http://example.org/sales#record-2009-merchant> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 1580000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-merchant>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2009> .
+
+<http://example.org/sales#record-2009-other> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 447000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-other>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2009> .
+
+<http://example.org/sales#record-2009-precast> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 1594000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-precast>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2009> .
+
+<http://example.org/sales#record-2009-readyMix> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 3991000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-readyMix>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2009> .
+
+<http://example.org/sales#record-2010-merchant> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 1572000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-merchant>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2010> .
+
+<http://example.org/sales#record-2010-other> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 287000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-other>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2010> .
+
+<http://example.org/sales#record-2010-precast> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 1777000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-precast>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2010> .
+
+<http://example.org/sales#record-2010-readyMix> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 4189000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-readyMix>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2010> .
+
+<http://example.org/sales#record-2011-merchant> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 1614000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-merchant>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2011> .
+
+<http://example.org/sales#record-2011-other> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 313000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-other>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2011> .
+
+<http://example.org/sales#record-2011-precast> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 1936000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-precast>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2011> .
+
+<http://example.org/sales#record-2011-readyMix> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 4535000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-readyMix>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2011> .
+
+<http://example.org/sales#record-2012-merchant> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 1496000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-merchant>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2012> .
+
+<http://example.org/sales#record-2012-other> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 260000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-other>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2012> .
+
+<http://example.org/sales#record-2012-precast> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 1782000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-precast>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2012> .
+
+<http://example.org/sales#record-2012-readyMix> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 4250000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-readyMix>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2012> .
+
+<http://example.org/sales#record-2013-merchant> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 1519000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-merchant>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2013> .
+
+<http://example.org/sales#record-2013-other> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 360000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-other>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2013> .
+
+<http://example.org/sales#record-2013-precast> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 1761000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-precast>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2013> .
+
+<http://example.org/sales#record-2013-readyMix> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 4680000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-readyMix>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2013> .
+
+<http://example.org/sales#record-2014-merchant> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 1611000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-merchant>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2014> .
+
+<http://example.org/sales#record-2014-other> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 468000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-other>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2014> .
+
+<http://example.org/sales#record-2014-precast> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 2182000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-precast>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2014> .
+
+<http://example.org/sales#record-2014-readyMix> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 4717000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-readyMix>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/GB>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2014> .
+
+<http://example.org/sales#record-2015-merchant> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 1701000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-merchant>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/UK>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2015> .
+
+<http://example.org/sales#record-2015-other> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 829000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-other>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/UK>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2015> .
+
+<http://example.org/sales#record-2015-precast> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 2360000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-precast>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/UK>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2015> .
+
+<http://example.org/sales#record-2015-readyMix> a <http://purl.org/linked-data/cube#Observation>;
+   <http://example.org/sales#massSold> 5273000000.0;
+   <http://example.org/sales#refSalesChannel> <http://example.org/cementVocab#channel-readyMix>;
+   <http://purl.org/linked-data/cube#dataSet> <http://example.org/sales>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refArea> <http://reference.data.gov.uk/id/places/made-up/UK>;
+   <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> <http://reference.data.gov.uk/id/gregorian-year/2015> .
+
+<http://example.org/sales#refSalesChannel> a <http://purl.org/linked-data/cube#DimensionProperty>;
+   rdfs:label "Sales channel (TODO: set range)";
+   rdfs:range "xsd:string" .
+
+<http://purl.org/linked-data/sdmx/2009/dimension#refArea> a <http://purl.org/linked-data/cube#DimensionProperty>;
+   rdfs:label "reference area for observation value";
+   rdfs:range <http://example.org/sales#referenceAreas> .
+
+<http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> a <http://purl.org/linked-data/cube#DimensionProperty>;
+   rdfs:label "reference period for observation value";
+   rdfs:range <http://www.w3.org/2006/time#Interval> .
+
+<http://example.org/sales#distribution-pdf> dc:title "Annual Cement Channel of Sale 2003 - 2015 (PDF format)";
+   dc:format "application/pdf";
+   dcat:downloadURL <http://cement.mineralproducts.org/documents/Annual_Cement_Channel_of_Sale_2003_2015.pdf> .
+
+ [
+     a csvw:TableGroup;
+     csvw:table [
+       a csvw:Table;
+       dc:title "Annual Cement Channel of Sale 2003 - 2015";
+       dc:publisher [
+         schema:name "Mineral Products Association";
+         schema:url <http://cement.mineralproducts.org>
+       ];
+       <http://purl.org/linked-data/cube#structure> <http://example.org/sales#dsd>;
+       csvw:row [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2010-merchant>;
+         csvw:rownum 21;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=22>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2011-other>;
+         csvw:rownum 48;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=49>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2003-precast>;
+         csvw:rownum 27;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=28>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2010-readyMix>;
+         csvw:rownum 8;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=9>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2013-other>;
+         csvw:rownum 50;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=51>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2009-merchant>;
+         csvw:rownum 20;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=21>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2004-readyMix>;
+         csvw:rownum 2;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=3>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2005-readyMix>;
+         csvw:rownum 3;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=4>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2011-readyMix>;
+         csvw:rownum 9;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=10>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2004-precast>;
+         csvw:rownum 28;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=29>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2005-precast>;
+         csvw:rownum 29;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=30>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2006-merchant>;
+         csvw:rownum 17;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=18>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2014-precast>;
+         csvw:rownum 38;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=39>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2014-readyMix>;
+         csvw:rownum 12;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=13>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2009-readyMix>;
+         csvw:rownum 7;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=8>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2011-precast>;
+         csvw:rownum 35;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=36>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2012-readyMix>;
+         csvw:rownum 10;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=11>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2007-readyMix>;
+         csvw:rownum 5;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=6>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2008-merchant>;
+         csvw:rownum 19;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=20>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2006-readyMix>;
+         csvw:rownum 4;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=5>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2008-readyMix>;
+         csvw:rownum 6;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=7>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2010-precast>;
+         csvw:rownum 34;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=35>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2011-merchant>;
+         csvw:rownum 22;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=23>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2015-precast>;
+         csvw:rownum 39;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=40>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2007-merchant>;
+         csvw:rownum 18;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=19>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2003-readyMix>;
+         csvw:rownum 1;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=2>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2004-other>;
+         csvw:rownum 41;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=42>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2003-other>;
+         csvw:rownum 40;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=41>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2009-other>;
+         csvw:rownum 46;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=47>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2008-precast>;
+         csvw:rownum 32;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=33>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2009-precast>;
+         csvw:rownum 33;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=34>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2004-merchant>;
+         csvw:rownum 15;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=16>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2013-precast>;
+         csvw:rownum 37;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=38>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2014-other>;
+         csvw:rownum 51;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=52>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2013-merchant>;
+         csvw:rownum 24;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=25>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2003-merchant>;
+         csvw:rownum 14;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=15>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2006-other>;
+         csvw:rownum 43;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=44>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2006-precast>;
+         csvw:rownum 30;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=31>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2012-precast>;
+         csvw:rownum 36;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=37>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2015-other>;
+         csvw:rownum 52;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=53>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2010-other>;
+         csvw:rownum 47;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=48>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2014-merchant>;
+         csvw:rownum 25;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=26>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2005-other>;
+         csvw:rownum 42;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=43>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2007-precast>;
+         csvw:rownum 31;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=32>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2005-merchant>;
+         csvw:rownum 16;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=17>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2007-other>;
+         csvw:rownum 44;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=45>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2012-merchant>;
+         csvw:rownum 23;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=24>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2015-readyMix>;
+         csvw:rownum 13;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=14>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2008-other>;
+         csvw:rownum 45;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=46>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2012-other>;
+         csvw:rownum 49;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=50>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2015-merchant>;
+         csvw:rownum 26;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=27>
+       ],  [
+         a csvw:Row;
+         csvw:describes <http://example.org/sales#record-2013-readyMix>;
+         csvw:rownum 11;
+         csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv#row=12>
+       ];
+       csvw:url <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv>;
+       dcat:distribution <http://example.org/sales#distribution-pdf>,
+         <http://example.org/sales#distribution-csv>
+     ];
+     prov:wasGeneratedBy [
+       a prov:Activity;
+       prov:endedAtTime "2018-03-22T19:40:25Z"^^xsd:dateTime;
+       prov:qualifiedUsage [
+         a prov:Usage;
+         prov:entity <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv-metadata.json>;
+         prov:hadRole csvw:tabularMetadata
+       ],  [
+         a prov:Usage;
+         prov:entity <file://home/rick/Dropbox/useless/Projects/13_Cement/cement-rdf-data-demo/sales_long.csv>;
+         prov:hadRole csvw:csvEncodedTabularData
+       ];
+       prov:startedAtTime "2018-03-22T19:40:25Z"^^xsd:dateTime;
+       prov:wasAssociatedWith <http://rubygems.org/gems/rdf-tabular>
+     ]
+ ] .
+

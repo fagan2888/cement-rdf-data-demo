@@ -1,0 +1,120 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "@id": "http://example.org/sales",
+  "url": "sales_long.csv",
+  "dc:title": "Annual Cement Channel of Sale 2003 - 2015",
+  "dc:publisher": [{
+    "schema:name": "Mineral Products Association",
+    "schema:url": {"@id": "http://cement.mineralproducts.org"}
+  }],
+  "dcat:distribution": [{
+    "@id": "http://example.org/sales#distribution-pdf",
+    "dc:title": "Annual Cement Channel of Sale 2003 - 2015 (PDF format)",
+    "dc:format": {"@value": "application/pdf"},
+    "dcat:downloadURL": {"@id": "http://cement.mineralproducts.org/documents/Annual_Cement_Channel_of_Sale_2003_2015.pdf"}
+  }, {
+    "@id": "http://example.org/sales#distribution-csv",
+    "dc:title": "Annual Cement Channel of Sale 2003 - 2015 (CSV format)",
+    "dc:format": {"@value": "text/csv"},
+    "dcat:downloadURL": {"@id": "sales_long.csv"},
+    "prov:wasDerivedFrom": {"@id": "http://example.org/sales#distribution-pdf"}
+  }],
+  "qb:structure": {
+    "@id": "http://example.org/sales#dsd",
+    "@type": "qb:DataStructureDefinition",
+    "rdfs:comment": "RDF Data Cube data structure definition for sales data (multi-measure approach)",
+    "qb:component": [
+      {
+        "qb:dimension": {
+          "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod",
+          "@type": "qb:DimensionProperty",
+          "rdfs:label": "reference period for observation value",
+          "rdfs:range": {
+            "@id": "http://www.w3.org/2006/time#Interval"
+          }
+        }
+      }, {
+        "qb:dimension": {
+          "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refArea",
+          "@type": "qb:DimensionProperty",
+          "rdfs:label": "reference area for observation value",
+          "rdfs:range": {
+            "@id": "http://example.org/sales#referenceAreas"
+          }
+        }
+      }, {
+        "qb:dimension": {
+          "@id": "http://example.org/sales#refSalesChannel",
+          "@type": "qb:DimensionProperty",
+          "rdfs:label": "Sales channel (TODO: set range)",
+          "rdfs:range": "xsd:string"
+        }
+      }, {
+        "qb:measure": {
+          "@id": "http://example.org/sales#massSold",
+          "@type": "qb:MeasureProperty",
+          "rdfs:label": "quantity sold",
+          "rdfs:comment": "put back units of measure",
+          "rdfs:range": {
+            "@id": "xsd:decimal"
+          },
+          "skos:notation": "m"
+        }
+      }, {
+        "qb:attribute": {
+          "@id": "http://def.seegrid.csiro.au/ontology/om/om-lite#uom",
+          "@type": "qb:AttributeProperty",
+          "rdfs:label": "unit of measurement"
+        },
+        "qb:componentAttachment": {
+          "@id": "qb:MeasureProperty"
+        },
+        "qb:componentRequired": true
+      }
+    ]
+  },
+  "tableSchema": {
+    "columns": [
+      {
+        "name": "year",
+        "titles": "year",
+        "datatype": "integer",
+        "required": true,
+        "propertyUrl": "http://purl.org/linked-data/sdmx/2009/dimension#refPeriod",
+        "valueUrl": "http://reference.data.gov.uk/id/gregorian-year/{+year}"
+      }, {
+        "name": "channel",
+        "titles": "channel",
+        "required": true,
+        "propertyUrl": "http://example.org/sales#refSalesChannel",
+        "valueUrl": "http://example.org/cementVocab#channel-{channel}"
+      }, {
+        "name": "sales",
+        "titles": "sales",
+        "datatype": "decimal",
+        "propertyUrl": "http://example.org/sales#massSold"
+      }, {
+        "name": "region",
+        "titles": "region",
+        "propertyUrl": "http://purl.org/linked-data/sdmx/2009/dimension#refArea",
+        "valueUrl": "http://reference.data.gov.uk/id/places/made-up/{region}"
+      },
+      {
+        "name": "observation",
+        "rdfs:comment": "this 'virtual' column makes each item a qb:Observation",
+        "virtual": true,
+        "propertyUrl": "rdf:type",
+        "valueUrl": "qb:Observation"
+      },
+      {
+        "name": "dataset_ref",
+        "rdfs:comment": "this 'virtual' column allows the qb:Observation instance that is the subject of the current row to be related to the qb:dataset",
+        "virtual": true,
+        "propertyUrl": "qb:dataSet",
+        "valueUrl": "http://example.org/sales"
+      }
+    ],
+    "primaryKey": [ "year", "channel" ],
+    "aboutUrl": "http://example.org/sales#record-{year}-{channel}"
+  }
+}
